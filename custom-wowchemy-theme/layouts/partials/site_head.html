@@ -180,7 +180,10 @@
   {{- end -}}
   <link rel="stylesheet" href="{{ $style.RelPermalink }}" />
 
-  {{ partial "marketing/google_analytics" . }}
+  {{/* Replace Google Analytics partial with a check for site configuration */}}
+  {{ if site.Config.Services.GoogleAnalytics.ID }}
+    {{ template "_internal/google_analytics.html" . }}
+  {{ end }}
   {{ partial "marketing/google_tag_manager" . }}
   {{ partial "marketing/microsoft_clarity" . }}
   {{ partial "marketing/baidu_tongji" . }}
